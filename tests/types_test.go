@@ -93,7 +93,36 @@ func TestEncodeDecode(t *testing.T) {
 }
 
 func TestSliceSerialization(t *testing.T) {
+	var (
+		cborHandle codec.CborHandle
+		slice1 []interface{}
+		slice2 []interface{}
+		err error
+	)
+	slice1 = append(slice1, "hello")
+	slice1 = append(slice1, 123)
 
+	var bs []byte
+	enc := codec.NewEncoderBytes(&bs, &cborHandle)
+	err = enc.Encode(slice1)
+	if err != nil {
+		log.Fatalf("enc.Encode() failed, err = %v", err)
+	}
+
+	// append zero values for proper decoding
+	// otherwise the test will fail (int vs int64 mismatch)
+	slice2 = append(slice2, "")
+	slice2 = append(slice2, 0)
+	dec := codec.NewDecoderBytes(bs, &cborHandle)
+	err = dec.Decode(&slice2)
+	if err != nil {
+		log.Fatalf("dec.Decode() failed, err = %v", err)
+	}
+
+	log.Printf("slice2 = %v\n", slice2)
+
+	assert.Equal(t, slice2[0], "hello")
+	assert.Equal(t, slice2[1], 123)
 }
 
 // to execute benchmarks, use `go test -bench=. ./tests/...` command
