@@ -3,7 +3,7 @@ package types
 import (
 	"github.com/stretchr/testify/assert"
 	"github.com/ugorji/go/codec"
-//  . "github.com/afiskon/golang-codec-example/types"
+    . "github.com/afiskon/golang-codec-example/types"
 	"log"
 	"testing"
 )
@@ -84,6 +84,12 @@ func TestMigration(t *testing.T) {
 	assert.Equal(t, v2.Field3, 456)
 	assert.Equal(t, v2.Field4, "")
 	assert.Equal(t, v2.Field5, false)
+}
+
+// Does the same BenchamrkSerialization does. This test is here for a
+// proper coverage report.
+func TestEncodeDecode(t *testing.T) {
+	encodeDecode()
 }
 
 // to execute benchmarks, use `go test -bench=. ./tests/...` command
