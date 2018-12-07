@@ -2,7 +2,7 @@ package main
 
 import (
 	"github.com/ugorji/go/codec"
-	. "go-sandbox/codec-examples-gen/types"
+	. "github.com/afiskon/golang-codec-example/types"
 	"log"
 )
 
