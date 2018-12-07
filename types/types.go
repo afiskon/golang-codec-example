@@ -1,4 +1,5 @@
-//+build generate
+//+build !test generate
+
 package types
 //go:generate codecgen -o types.gen.go types.go
 

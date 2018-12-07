@@ -92,6 +92,10 @@ func TestEncodeDecode(t *testing.T) {
 	encodeDecode()
 }
 
+func TestSliceSerialization(t *testing.T) {
+
+}
+
 // to execute benchmarks, use `go test -bench=. ./tests/...` command
 func BenchmarkSerialization(t *testing.B) {
 	for i := 0; i < 1000000; i++ {
