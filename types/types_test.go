@@ -3,7 +3,7 @@ package types
 import (
 	"github.com/stretchr/testify/assert"
 	"github.com/ugorji/go/codec"
-    . "github.com/afiskon/golang-codec-example/types"
+//    . "github.com/afiskon/golang-codec-example/types"
 	"log"
 	"testing"
 )
