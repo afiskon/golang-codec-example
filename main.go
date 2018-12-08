@@ -13,7 +13,8 @@ func main() {
 	)
 
 	//v1 := Hero{ "Alex", 123, 456, &WariorInfo{ BOW, 10 }, nil}
-	v1 := Hero{ "Bob", 234, 567, nil, &MageInfo{ []Spell{FIREBALL, THUNDERBOLT}, 42 }}
+	v1 := Hero{ "Bob", 234, 567, nil,
+		&MageInfo{ []Spell{FIREBALL, THUNDERBOLT}, 42 } }
 
 	var bs []byte
 	enc := codec.NewEncoderBytes(&bs, &cborHandle)
