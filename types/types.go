@@ -3,12 +3,6 @@
 package types
 //go:generate codecgen -o types.gen.go types.go
 
-type Class int
-const (
-	WARIOR Class = iota
-	MAGE   Class = iota
-)
-
 type Spell int
 const (
 	FIREBALL Spell = iota
