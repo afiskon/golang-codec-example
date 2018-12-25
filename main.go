@@ -12,7 +12,7 @@ func main() {
 		err error
 	)
 
-	//v1 := Hero{ "Alex", 123, 456, &WariorInfo{ BOW, 10 }, nil}
+	//v1 := Hero{ "Alex", 123, 456, &WarriorInfo{ BOW, 10 }, nil}
 	v1 := Hero{ "Bob", 234, 567, nil,
 		&MageInfo{ []Spell{FIREBALL, THUNDERBOLT}, 42 } }
 
@@ -22,7 +22,7 @@ func main() {
 	if err != nil {
 		log.Fatalf("enc.Encode() failed, err = %v", err)
 	}
-	log.Printf("bs = %q, len(bs) = %d, cap(bs) = %d", bs, len(bs), cap(bs))
+	log.Printf("bs = %q, len = %d, cap = %d", bs, len(bs), cap(bs))
 
 	// Decode bs to v2
 
@@ -34,8 +34,8 @@ func main() {
 	}
 
 	log.Printf("v2 = %v", v2)
-	if v2.WariorInfo != nil{
-		log.Printf("WariorInfo = %v", *v2.WariorInfo)
+	if v2.WarriorInfo != nil{
+		log.Printf("WarriorInfo = %v", *v2.WarriorInfo)
 	}
 	if v2.MageInfo != nil {
 		log.Printf("MageInfo = %v", *v2.MageInfo)

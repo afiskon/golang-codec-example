@@ -3,7 +3,7 @@ package types
 import (
 	"github.com/stretchr/testify/assert"
 	"github.com/ugorji/go/codec"
-//    . "github.com/afiskon/golang-codec-example/types"
+	//    . "github.com/afiskon/golang-codec-example/types"
 	"log"
 	"testing"
 )
@@ -27,11 +27,11 @@ func implementsSelferInterface(obj codec.Selfer) bool {
 func encodeDecode() {
 	var (
 		cborHandle codec.CborHandle
-		err error
+		err        error
 	)
 
-	//v1 := Hero{ "Alex", 123, 456, &WariorInfo{ BOW, 10 }, nil}
-	v1 := Hero{ "Bob", 234, 567, nil, &MageInfo{ []Spell{FIREBALL, THUNDERBOLT}, 42 }}
+	//v1 := Hero{ "Alex", 123, 456, &WarriorInfo{ BOW, 10 }, nil}
+	v1 := Hero{"Bob", 234, 567, nil, &MageInfo{[]Spell{FIREBALL, THUNDERBOLT}, 42}}
 
 	var bs []byte
 	enc := codec.NewEncoderBytes(&bs, &cborHandle)
@@ -53,7 +53,7 @@ func encodeDecode() {
 
 // make sure user didn't forget to run `go generate ./...` according to README.md
 func TestSerialization(t *testing.T) {
-	hero := Hero{ "Alex", 123, 456, &WariorInfo{ BOW, 10 }, nil}
+	hero := Hero{"Alex", 123, 456, &WarriorInfo{BOW, 10}, nil}
 	res := implementsSelferInterface(&hero)
 	if !res {
 		t.FailNow()
@@ -63,10 +63,10 @@ func TestSerialization(t *testing.T) {
 func TestMigration(t *testing.T) {
 	var (
 		cborHandle codec.CborHandle
-		err error
+		err        error
 	)
 
-	v1 := TypeVer1{ 123, "Field2", 456}
+	v1 := TypeVer1{123, "Field2", 456}
 	var bs []byte
 	enc := codec.NewEncoderBytes(&bs, &cborHandle)
 	err = enc.Encode(v1)
@@ -95,9 +95,9 @@ func TestEncodeDecode(t *testing.T) {
 func TestSliceSerialization(t *testing.T) {
 	var (
 		cborHandle codec.CborHandle
-		slice1 []interface{}
-		slice2 []interface{}
-		err error
+		slice1     []interface{}
+		slice2     []interface{}
+		err        error
 	)
 	slice1 = append(slice1, "hello")
 	slice1 = append(slice1, 123)
